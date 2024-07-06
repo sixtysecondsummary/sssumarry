@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Example</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        #videoFrame {
+            position: absolute;
+            width: 560px;
+            height: 315px;
+            border: none;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+
+<video id="bgVideo" autoplay muted loop playsinline>
+    <source src="path/to/your/video.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+
+<iframe id="videoFrame" src="https://www.youtube.com/embed/Na0w3Mz46GA?si=aNiq6SiZS5CEhSju" allowfullscreen></iframe>
+
+<script>
+    const videoFrame = document.getElementById('videoFrame');
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    videoFrame.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - videoFrame.offsetLeft;
+        offsetY = e.clientY - videoFrame.offsetTop;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            videoFrame.style.left = `${e.clientX - offsetX}px`;
+            videoFrame.style.top = `${e.clientY - offsetY}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+</script>
+
+</body>
+</html>

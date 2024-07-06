@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="icon" href="/imgs/Sweeney.png" type="image/png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweeney Pricing</title>
+
+    <style>
+
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	text-align: center;
+}
+
+:root {
+	--c-blue-900: #c242ad;
+	--c-blue-800: #c242ade9;
+	--c-blue-700: #000000;
+	--c-blue-500: #c242adbc;
+	--c-blue-300: #c242add1;
+	--c-blue-200: #c242ade6;
+	--c-blue-100: #ffffff;
+
+	--c-green-400: #00000052;
+}
+
+/* Some basic CSS overrides */
+body {
+	line-height: 1.5;
+	// min-height: 100vh;
+	font-family: "Outfit", sans-serif;
+	align-items: center;
+	text-align: center;
+	display: flex;
+	background-image: url("/imgs/bbbg.png");
+	justify-content: center;
+	background-color: black;
+	color: var(--c-blue-100);
+	padding: 10vh 12px;
+	animation: fadeIn 5s forwards;
+
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+a {
+	color: inherit;
+}
+/* End basic CSS override */
+
+@keyframes spin {
+  to {
+    --bg-angle: 360deg;
+  }
+}
+
+
+.price-table {
+	background-color: var(--c-blue-700);
+	border-radius: 16px;
+	max-width: 375px;
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 15px 45px 0 rgba(#000, 0.15);
+	position: relative;
+	background-image: linear-gradient(
+		135deg,
+		rgba(#4ade80, 0.15),
+		rgba(#1d7bdb, 0.1) 20%,
+		var(--c-blue-700) 40%,
+		var(--c-blue-700) 100%
+	);
+	&:after {
+		content: "";
+		display: block;
+		top: -3px;
+		left: -3px;
+		bottom: -3px;
+		right: -3px;
+		z-index: -1;
+		position: absolute;
+		animation: fadeIn 7s forwards;
+
+		border-radius: 16px;
+		background-image: linear-gradient(
+			135deg,
+			var(--c-green-400),
+			var(--c-blue-500) 40%,
+			var(--c-blue-300) 60%,
+			var(--c-blue-700) 100%
+		);
+
+	}
+
+	.price {
+		font-size: 3rem;
+		line-height: 1;
+		margin-top: 10px;
+		font-weight: 700;
+		display: inline-flex;
+		align-self: center;
+		align-items: center;
+		gap: 4px;
+		position: relative;
+		color: #fff;
+		small {
+			font-size: 1.25rem;
+			font-weight: 400;
+			position: absolute;
+			left: -1.5ch;
+		}
+	}
+	h5 {
+		margin-top: 34px;
+	}
+
+	.title {
+		font-size: 1.25rem;
+		font-weight: 600;
+		line-height: 1.25;
+		text-align: center;
+		margin-top: px;
+		color: #fff;
+	}
+
+	.description {
+		font-size: 1rem;
+		text-align: center;
+		margin-top: -20px;
+	}
+}
+
+.features {
+	margin-top: 2px;
+}
+
+.feature {
+	position: relative;
+	& + & {
+		margin-top: 10px;
+	}
+	summary {
+		display: inline-flex;
+		align-items: center;
+		list-style: none; // Remove arrow
+		&::-webkit-details-marker {
+			display: none; // Remove arrow
+		}
+	}
+
+	&[open] summary:after {
+		content: "";
+		display: block;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		position: fixed;
+		z-index: 50;
+	}
+
+	&[open] {
+		div {
+			animation: scale 0.15s ease;
+		}
+	}
+
+	.checkmark {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		background-color: var(--c-green-400);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-right: 12px;
+		svg {
+			width: 18px;
+			height: 18px;
+			color: #fff;
+		}
+	}
+
+	.question-icon {
+		display: flex;
+		align-items: center;
+		margin-left: 6px;
+		cursor: pointer;
+	}
+
+	.answer {
+		padding: 12px;
+		background-color: var(--c-blue-800);
+		border-radius: 6px;
+		position: absolute;
+		top: -12px;
+		z-index: 100;
+		transform: translatey(-100%) translatex(-50%);
+		transform-origin: bottom center;
+		width: 80%;
+		left: 50%;
+		border: 1px solid var(--c-blue-300);
+		box-shadow: 0 15px 30px 0 rgba(#000, 0.1);
+	}
+}
+
+article {
+	animation: fadeIn 1s bo;
+
+}
+
+
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+
+
+@keyframes scale {
+	0% {
+		transform: translatey(-100%) translatex(-50%) scale(0);
+	}
+	100% {
+		transform: translatey(-100%) translatex(-50%) scale(1);
+	}
+}
+
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+
+  }
+  100% {
+    transform: translateY(0);
+  }
+  
+}
+
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+ <div>
+	
+ </div>
+
+		<article class="price-table">
+
+			
+
+			<div>
+					</div>
+			<div style="margin: 0;
+			margin-top: -40px;
+			margin-bottom: -64px;
+			padding: 0;
+			" class="price"><h5> </h5><p></p>
+</div>
+
+
+
+<div></div>
+			<h2 style="
+			margin-bottom: 24px;
+			margin-top: -5px;
+			font-size: 36px;
+			" class="title">$5000<small>/mo</small></h2>
+
+
+<p style="margin-top: -30px;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+margin-bottom: 20px;
+font-size: 16px;
+">Sweeney™</p>
+			<p style="margin-top: -20px;
+			font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+			margin-bottom: 20px;
+			font-size: 10px;
+			">+2.9% Stripe™</p>
+			<p class="description">A software for barber-preneurs.
+			</p>
+			<div class="features">
+				<details class="feature">
+					<summary>
+						<i aria-hidden="true" class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+							</svg>
+						</i>
+						<span class="name">UNLIMITED SERVICES</span>
+						<i aria-hidden="true" class="question-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+							</svg>
+						</i>
+					</summary>
+					<div class="answer">
+						Offer a wide range of services without limitations, ensuring you can cater to every client's needs and preferences.
+					</div>
+				</details>
+				<details class="feature">
+					<summary>
+						<i aria-hidden="true" class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+							</svg>
+						</i>
+						<span class="name">UNLIMITED PRODUCTS</span>
+						<i aria-hidden="true" class="question-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+							</svg>
+						</i>
+					</summary>
+					<div class="answer">
+						Stock up on products and merchandise without worrying about storage limits, making it convenient for clients to purchase their favorite items.
+					</div>
+				</details>
+				<details class="feature">
+					<summary>
+						<i aria-hidden="true" class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+							</svg>
+						</i>
+						<span class="name">PROMO CAMPAIGNS</span>
+						<i aria-hidden="true" class="question-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+							</svg>
+						</i>
+					</summary>
+					<div class="answer">
+						Boost your sales and attract new clients with targeted promotion campaigns that drive engagement and increase revenue.
+					</div>
+				</details>
+				<details class="feature">
+					<summary>
+						<i aria-hidden="true" class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+							</svg>
+						</i>
+						<span class="name">UNLIMITED LOCATIONS</span>
+						<i aria-hidden="true" class="question-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+							</svg>
+						</i>
+					</summary>
+					<div class="answer">
+						Attract new clients with targeted promotion campaigns that drive engagement and increase revenue.
+					</div>
+				</details>
+				<details class="feature">
+					<summary>
+						<i aria-hidden="true" class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+							</svg>
+						</i>
+						<span class="name">UNLIMITED CLIENTS</span>
+						<i aria-hidden="true" class="question-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+							</svg>
+						</i>
+					</summary>
+					<div class="answer">
+						Boost your sales and attract new clients with targeted promotion campaigns that drive engagement and increase revenue.
+					</div>
+				</details>
+				<details class="feature">
+					<summary>
+						<i aria-hidden="true" class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+							</svg>
+						</i>
+						<span class="name">UNLITIMED DATA</span>
+						<i aria-hidden="true" class="question-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+							</svg>
+						</i>
+					</summary>
+					<div class="answer">
+Our competitors charge extra for data but we include  it with your plan!					</div>
+				</details>
+				<details class="feature">
+					<summary>
+						<i aria-hidden="true" class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />
+							</svg>
+						</i>
+						<span class="name">BUILT-IN APP</span>
+						<i aria-hidden="true" class="question-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+								<path fill="none" d="M0 0h24v24H0z" />
+								<path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />
+							</svg>
+						</i>
+					</summary>
+					<div class="answer">
+						Sweeney has a ready-to-go built-in  progressive web application for Iphone or Android!
+					</div>
+				</details>
+			</div>
+			<a style="margin-top: 12px;
+				background-color: rgb(110, 0, 98);
+				color: white;
+				text-decoration: none;
+				
+				font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+				font-size: 24px;
+				border-radius: 16px;
+				border: 2px;
+				border-color: rgba(128, 0, 128, 0.808);
+				" href="https://buy.stripe.com/14k8xQ0VIa2K9lC4gi">Begin</a>
+
+		</article>
+	</div>
+
+
+
+<div>
+	
+</div>
+
+
+
+
+
+    <script>
+
+
+
+    </script>
+</body>
+</html>
